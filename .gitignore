@@ -1,0 +1,15 @@
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 一時ファイル
+*.tmp
+*.bak
+~$*
+
+# 生成したPDFや中間ファイル
+output/*
+!output/.gitkeep
