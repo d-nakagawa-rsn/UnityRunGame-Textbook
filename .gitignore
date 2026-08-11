@@ -1,5 +1,6 @@
 # VS Code
-.vscode/
+.vscode/*
+!.vscode/settings.json
 
 # OS
 .DS_Store
@@ -11,5 +12,6 @@ Thumbs.db
 ~$*
 
 # 生成したPDFや中間ファイル
+*.pdf
 output/*
 !output/.gitkeep
