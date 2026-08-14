@@ -1,0 +1,77 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.cover-header {
+    position: absolute;
+    top: 14mm;
+    left: 0;
+    right: 0;
+
+    padding: 7mm 10mm 6mm;
+
+    background: rgba(255, 255, 255, 0.82);
+
+    text-align: center;
+}
+
+.cover {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+
+    background-image: url("../images/cover.png");
+    background-size: cover;
+    background-position: center;
+
+    overflow: hidden;
+}
+
+.cover-title {
+    font-size: 30pt;
+    font-weight: bold;
+}
+
+.cover-subtitle {
+    margin-top: 6mm;
+    font-size: 14pt;
+    font-weight: 600;
+}
+
+.cover-author {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2mm;
+
+    padding: 2.5mm 10mm;
+
+    text-align: right;
+
+    background: rgba(255, 255, 255, 0.78);
+}
+
+.author-name {
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+.author-brand {
+    margin-top: 0.5mm;
+    font-size: 8.5pt;
+}
+
+.early-access-badge {
+    position: absolute;
+    top: 2mm;
+    right: 2mm;
+
+    padding: 2mm 4mm;
+
+    font-size: 11pt;
+    font-weight: bold;
+
+    background: rgba(255, 255, 255, 0.9);
+}

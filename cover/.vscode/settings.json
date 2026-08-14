@@ -1,3 +1,12 @@
 {
-    "markdown-pdf.displayHeaderFooter": false
+    "markdown-pdf.displayHeaderFooter": false,
+
+    "markdown-pdf.margin.top": "0",
+    "markdown-pdf.margin.bottom": "0",
+    "markdown-pdf.margin.left": "0",
+    "markdown-pdf.margin.right": "0",
+
+    "markdown-pdf.styles": [
+        "styles/cover.css"
+    ]
 }

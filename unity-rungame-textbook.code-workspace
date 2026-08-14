@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "cover"
+		}
+	],
+	"settings": {
+		"markdown-pdf.styles": [
+			"styles/markdown-pdf.css"
+		]
+	}
+}
