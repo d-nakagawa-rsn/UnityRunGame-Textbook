@@ -1,7 +1,3 @@
-:[表紙](00_cover.md)
-
-<div class="page"></div>
-
 :[はじめに](01_introduction.md)
 
 <div class="page"></div>
