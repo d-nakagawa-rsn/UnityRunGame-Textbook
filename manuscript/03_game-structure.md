@@ -124,57 +124,15 @@ Resultからは、プレイヤーの選択によってGameまたはTitleへ移�
 * `ResultManager`：Resultモードを担当する
 
 ![クラス構成](../images/chapter-01/chapter01_class_dig.svg)
+図1-1　ゲーム全体のモード管理に関するクラス構成
 
+Title、Game、Resultを担当する3つのManagerは、共通してIModeManagerインターフェースを実装しています。
 
-### Manager
+また、各モードManagerが自身でモードを切り替えるのではなく、SignalKindを使ってManagerへモード遷移のきっかけを通知する構成にしています。実際のモード切り替えは、ゲーム全体の進行を管理するManagerが担当します。
 
-`Manager`は、ゲーム全体の進行を管理するクラスです。
+このように、ゲーム全体の進行を管理するクラスと、各モード固有の処理を担当するクラスを分けることで、それぞれの責務を整理しています。
 
-現在のモードを保持し、Title、Game、Resultのうち、現在有効なモードに対応するManagerだけを更新します。
-
-また、モードが切り替わる際には、これまでのモードの終了処理を呼び出したあと、新しいモードの開始処理を呼び出します。
-
-ゲーム起動時にはTitleから開始し、その後は各モードから送られてくる通知に応じて、次のモードへ切り替えます。
-
-### 各モードを担当するManager
-
-Title、Game、Resultには、それぞれ専用のManagerを用意しています。
-
-たとえば`TitleManager`はタイトル画面の表示やゲーム開始入力の受付を担当し、`GameManager`はステージやプレイヤーを含むゲームプレイ全体を管理します。
-
-`ResultManager`は、ゲーム終了時に渡された結果を受け取り、走破距離やベスト記録を表示します。
-
-各モード固有の処理をそれぞれのクラスへ分けることで、`Manager`自身はゲーム全体の遷移管理に集中できるようにしています。
-
-### IModeManager
-
-3つのモードを担当するManagerは、共通して`IModeManager`インターフェースを実装しています。
-
-`IModeManager`では、各モードが共通して持つ処理を次の4つにまとめています。
-
-* `Init`：モードを初期化する
-* `OnEnter`：そのモードへ入る際の処理を行う
-* `OnExit`：そのモードから出る際の処理を行う
-* `Tick`：そのモード中の更新処理を行う
-
-Title、Game、Resultでは実際に行う処理は異なりますが、「モードへ入る」「モード中に更新する」「モードから出る」という基本的な流れは共通しています。
-
-この共通部分をインターフェースとして定義することで、各モードのクラスが同じライフサイクルを持つ構成にしています。
-
-### モード間の通知
-
-各モードを担当するManagerは、自分自身で次のモードへ切り替えることはしません。
-
-たとえば`TitleManager`がゲーム開始の入力を受け取った場合は、「ゲームを開始したい」という通知を`Manager`へ送ります。
-
-`Manager`はその通知を受け取り、現在のモードと通知の内容をもとに、TitleからGameへ切り替えます。
-
-同様に、Gameでゲームオーバーが発生した場合はResultへ、Resultで再挑戦が選ばれた場合はGameへ、タイトルへ戻る操作が行われた場合はTitleへ切り替えます。
-
-また、通知には必要に応じてデータを含めることができます。
-GameからResultへ移行するときには、そのプレイの結果を`GameResult`として渡し、Result側で走破距離の表示などに利用します。
-
-このように本ゲームでは、ゲーム全体の進行を管理するクラスと、各モード固有の処理を担当するクラスを分けています。
+次節では、この構成が実際のコードでどのように実装されているのかを見ていきます。
 
 ## 5. モード管理の実装
 
@@ -277,6 +235,30 @@ private void Update()
 
 `Tick`は3つのManagerに共通して用意している更新処理です。この共通インターフェースについては、後ほど`IModeManager`の説明で取り上げます。
 
+::: note
+**COLUMN：IModeManagerをさらに活用するなら**
+
+本実装では、現在の`Mode`に応じて`switch`文で各`Manager`の`Tick`を呼び分けています。
+
+一方で、現在有効な`Manager`を`IModeManager`型のフィールドとして保持しておけば、`Update`側では具体的な`Manager`を意識せずに更新処理を呼び出す構成にすることもできます。
+
+```cs
+private IModeManager _currentManager;
+
+private void Update()
+{
+    _currentManager?.Tick(Time.deltaTime);
+}
+```
+
+この場合、モードを切り替える際に`_currentManager`へ対応する`Manager`を設定しておけば、`Update`では`TitleManager`、`GameManager`、`ResultManager`の違いを意識する必要がありません。
+
+`IModeManager`を共通の型として利用することで、インターフェースをより積極的に活用した構成にできます。
+
+本書では完成したゲームの実装を題材としているため、この部分は変更せずに扱いますが、別の設計方法の一つとして考えることができます。
+:::
+
+<div class="page"></div>
 
 #### モードを切り替える
 
@@ -285,8 +267,6 @@ private void Update()
 ```cs
 private void SwitchTo(Mode next)
 {
-    RLogger.Log($"{nameof(Manager)}.{nameof(SwitchTo)}. next:{next}. current:{_mode}");
-
     // 現在のモードと同じ場合は何もしない
     if (_mode == next)
     {
@@ -336,6 +316,26 @@ private void SwitchTo(Mode next)
 現在のモードを終了したあと、`_mode`を`next`へ更新し、新しいモードを担当するManagerの`OnEnter`を呼び出します。
 
 このように、モードを切り替える際には、**現在のモードを終了してから新しいモードを開始する**という順序で処理しています。
+
+#### 通知の種類を表すSignalKind
+
+各モードManagerから`Manager`へ通知する内容は、`SignalKind`列挙型で表しています。
+
+```cs
+public enum SignalKind
+{
+    StartGame,
+    GameOver,
+    Retry,
+    ReturnTitle
+}
+```
+
+`StartGame`はゲーム開始、`GameOver`はゲームオーバー、`Retry`は再挑戦、`ReturnTitle`はタイトル画面へ戻る操作を表します。
+
+`Manager`は、現在のモードと受け取った`SignalKind`の組み合わせから、次に遷移するモードを判断します。
+
+<div class="page"></div>
 
 #### 各Managerからの通知を受け取る
 
@@ -430,7 +430,7 @@ Titleモードでは、`TitleManager`の`Tick`が`Manager`から毎フレーム�
 ```cs
 using UnityEngine.InputSystem;
 
-(中略)
+// (中略)
 
 private Action<SignalKind, object> _raiseSignal;
 

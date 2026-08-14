@@ -1,8 +1,51 @@
+/* h2：章内の大きな節 */
+h2 {
+    font-size: 1.55em;
+    font-weight: 600;
+
+    border-bottom: 2px solid #888;
+    padding-bottom: 0.25em;
+
+    margin-top: 1.8em;
+    margin-bottom: 0.8em;
+
+    break-after: avoid-page;
+    page-break-after: avoid;
+}
+
+/* h3：節内の項目 */
+h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.2em;
+
+    margin-top: 1.5em;
+    margin-bottom: 0.7em;
+
+    break-after: avoid-page;
+    page-break-after: avoid;
+}
+
+/* h4：コード解説などの小区切り */
 h4 {
+    font-size: 1.05em;
+    font-weight: 600;
+
     border-left: 4px solid #888;
     padding-left: 8px;
+
     margin-top: 1.5em;
     margin-bottom: 0.8em;
+
+    break-after: avoid-page;
+    page-break-after: avoid;
+}
+
+pre {
+    break-inside: avoid;
+    page-break-inside: avoid;
 }
 
 .note {
