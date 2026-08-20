@@ -1,0 +1,57 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="ページ-1" id="wgLcAIR7XQNP21hWFiuU">
+    <mxGraphModel dx="1664" dy="925" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jvsQqwpXE4S6371seLtm-7" edge="1" parent="1" source="jvsQqwpXE4S6371seLtm-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" target="jvsQqwpXE4S6371seLtm-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jvsQqwpXE4S6371seLtm-12" connectable="0" parent="jvsQqwpXE4S6371seLtm-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#000000;fontSize=16;" value="StartGame" vertex="1">
+          <mxGeometry relative="1" x="-0.5197" y="-1" as="geometry">
+            <mxPoint x="22" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jvsQqwpXE4S6371seLtm-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Title&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="360" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="jvsQqwpXE4S6371seLtm-15" edge="1" parent="1" source="jvsQqwpXE4S6371seLtm-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;" target="jvsQqwpXE4S6371seLtm-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="440" as="sourcePoint" />
+            <mxPoint x="560" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jvsQqwpXE4S6371seLtm-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Game&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="120" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="jvsQqwpXE4S6371seLtm-9" edge="1" parent="1" source="jvsQqwpXE4S6371seLtm-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" target="jvsQqwpXE4S6371seLtm-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jvsQqwpXE4S6371seLtm-11" edge="1" parent="1" source="jvsQqwpXE4S6371seLtm-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=2;" target="jvsQqwpXE4S6371seLtm-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="460" as="sourcePoint" />
+            <mxPoint x="270" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jvsQqwpXE4S6371seLtm-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Result&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="600" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="jvsQqwpXE4S6371seLtm-14" connectable="0" parent="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#000000;fontSize=16;" value="ReturnTitle" vertex="1">
+          <mxGeometry x="700" y="400" as="geometry">
+            <mxPoint x="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jvsQqwpXE4S6371seLtm-16" connectable="0" parent="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#000000;fontSize=16;" value="GameOver" vertex="1">
+          <mxGeometry x="280" y="420" as="geometry">
+            <mxPoint x="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jvsQqwpXE4S6371seLtm-17" connectable="0" parent="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#000000;fontSize=16;" value="Retry" vertex="1">
+          <mxGeometry x="450" y="410" as="geometry">
+            <mxPoint x="125" y="71" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

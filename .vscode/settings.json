@@ -3,5 +3,6 @@
     "markdown-pdf.headerTemplate": "<div></div>",
     "markdown-pdf.footerTemplate": "<div style=\"font-size: 9px; width: 100%; text-align: center;\"><span class='pageNumber'></span></div>",
     "markdown-pdf.styles": ["styles/markdown-pdf.css"],
-    "markdown.styles": ["styles/markdown-pdf.css"]
+    "markdown.styles": ["styles/markdown-pdf.css"],
+    "[markdown]": {"editor.wordWrap": "on"}
 }

@@ -2,7 +2,7 @@
 
 cd /d "%~dp0"
 
-qpdf --empty --pages cover\00_cover.pdf manuscript\book.pdf -- final-book.pdf
+qpdf manuscript\book.pdf --pages cover\00_cover.pdf 1 . 1-z -- final-book.pdf
 
 if errorlevel 1 (
     echo.

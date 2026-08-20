@@ -2,7 +2,7 @@
 
 cd /d "%~dp0"
 
-qpdf --empty --pages cover\00_cover-early-access.pdf manuscript\book-early.pdf -- final-book-early-access.pdf
+qpdf manuscript\book-early.pdf --pages cover\00_cover-early-access.pdf 1 . 1-z -- final-book-early-access.pdf
 
 if errorlevel 1 (
     echo.
